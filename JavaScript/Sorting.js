@@ -1,6 +1,6 @@
 
 // Insertion Sort Algorithm in JavaScript
-let num = [2, 3, 4, 5, 1, 6];
+let arr = [5, 4, 1, 3, 2]
 function insertionSort(num) {
     for (let i = 1; i < num.length; i++) {
         let a = num[i];
@@ -16,12 +16,10 @@ function insertionSort(num) {
     return num;
 }
 
-console.log(insertionSort(num));
-
+console.log(insertionSort(arr));
 
 
 // Bubble Sort Algorithm in JavaScript
-
 function bubbleSort(nums) {
     // maximum n-1 iterations 
     for (let i = 0; i < nums.length - 1; i++) {
@@ -39,5 +37,23 @@ function bubbleSort(nums) {
     return nums;
 }
 
-let nums = [1, 2, 3, 4, 5];
-console.log(bubbleSort(nums))
+console.log(bubbleSort(arr))
+
+
+// Selection Sort
+function selectionSort(arr) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        let sIndex = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[sIndex])
+                sIndex = j;
+        }
+        let temp = arr[i];
+        arr[i] = arr[sIndex];
+        arr[sIndex] = temp;
+
+    }
+    return arr;
+}
+
+console.log(selectionSort(arr))

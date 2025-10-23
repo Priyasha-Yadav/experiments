@@ -58,9 +58,42 @@ for(int i = 0; i<5; i++){
 
 void printIntersection(int (&arr)[7] , array<int,5> arr1){}
 
-int linearSearch(){};
+// int linearSearch(){};
 
-int reverseVec(){};
+void reverseVec(vector<int>& vec){
+    for(int i = 0; i < vec.size()/2 ; i++){
+        swap(vec[i], vec[vec.size() - 1 - i]);
+    }
+};
+
+
+void printMaxSubarray(vector<int> vec){
+
+cout<<"Sub-Arrays: "<<endl;
+
+for(int st = 0; st < vec.size(); st++){
+    for(int end = st; end < vec.size(); end++){
+        for(int k = st; k<= end; k++){
+            cout<<vec[k]<<" ";
+        }
+        cout<<endl;
+    }
+}
+};
+
+
+int SumMaxSubarray(vector<int> vec) {
+    int max_sum = vec[0]; 
+    for (int st = 0; st < vec.size(); st++) {
+        int curr_sum = 0; 
+        for (int end = st; end < vec.size(); end++) {
+            curr_sum += vec[end];
+            max_sum = max(max_sum, curr_sum);
+        }
+    }
+    return max_sum;
+}
+
 
 int main()
 {
@@ -75,11 +108,18 @@ int main()
     array<int, 5> arr1 = {1, 2, 2, 4, 4};
     sumProduct(arr1);
     vector<int> vec = {78,75,57, 0, 90, 15,100};
+    reverseVec(vec);
+    for(int i = 0; i<vec.size(); i++){
+        cout<<vec[i]<<" ";
+    };
     swapMinMax(vec);
     for(int val : vec){
         cout<<val<<" ";
     }
     printUnique(arr1);
+    printMaxSubarray(vec);
+    cout<<"Max Sum: " <<SumMaxSubarray(vec)<<endl;
+    
     printIntersection(arr, arr1);
 
     return 0;
